@@ -142,7 +142,7 @@ double GLSLImpl::Allocate(std::string * err)
     }
             
     // Create FBOs
-    _fbos.reserve(_kernels.size());
+    _fbos.resize(_kernels.size());
     glGenFramebuffers(_kernels.size(), _fbos.data());
 
     // Create a renderbuffer object to store depth info

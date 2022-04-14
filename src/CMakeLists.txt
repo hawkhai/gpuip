@@ -83,7 +83,7 @@ if(BUILD_PYTHON_BINDINGS)
   # Install python bindings in the python site-packages
   execute_process(COMMAND
     ${PYTHON_EXECUTABLE} -c
-    "from distutils.sysconfig import get_python_lib; print get_python_lib()"
+    "from distutils.sysconfig import get_python_lib; print(get_python_lib())"
     OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
   install(TARGETS pygpuip DESTINATION ${PYTHON_SITE_PACKAGES} COMPONENT python)
 endif()

@@ -208,7 +208,7 @@ void GaussianBlurCPU(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int j = y - BLUR_N; j <= y + BLUR_N; ++j)  {
                     for(int i = x - BLUR_N; i <= x+BLUR_N; ++i) {
                         if (i>=0 && j>= 0 && i < width && j < height) {
@@ -247,7 +247,7 @@ void GaussianBlurCPUMultiThreaded(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int j = y - BLUR_N; j <= y + BLUR_N; ++j)  {
                     for(int i = x - BLUR_N; i <= x+BLUR_N; ++i) {
                         if (i>=0 && j>= 0 && i < width && j < height) {
@@ -287,7 +287,7 @@ void GaussianBlurSeparableCPU(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int i = x - BLUR_N; i <= x+BLUR_N; ++i) {
                     if (i>=0 &&  i < width) {
                         w = exp(-invdx2*((i-x)*(i-x)));
@@ -309,7 +309,7 @@ void GaussianBlurSeparableCPU(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int j = y - BLUR_N; j <= y+BLUR_N; ++j) {
                     if (j>=0 &&  j < height) {
                         w = exp(-invdx2*((j-y)*(j-y)));
@@ -347,7 +347,7 @@ void GaussianBlurSeparableCPUMultiThreaded(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int i = x - BLUR_N; i <= x+BLUR_N; ++i) {
                     if (i>=0 &&  i < width) {
                         exp(-invdx2*((i-x)*(i-x)));
@@ -370,7 +370,7 @@ void GaussianBlurSeparableCPUMultiThreaded(const std::vector<Imf::Rgba> & A,
                 Imf::Rgba out;
                 float totWeight = 0;
                 const float invdx2 = 1.0/(width*width);
-                float w;
+                float w = 0;
                 for(int j = y - BLUR_N; j <= y+BLUR_N; ++j) {
                     if (j>=0 &&  j < height) {
                         w = exp(-invdx2*((j-y)*(j-y)));
