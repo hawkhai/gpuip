@@ -104,6 +104,18 @@ else()
 	set(LIB_SUFFIX .a)
 endif()
 
+IF(CMAKE_CL_64)
+set(OpenCL_INCLUDE_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/../OpenCL-SDK-v2022.04.01-Win-x64/OpenCL-SDK-2022.4.1-win32/include)
+set(OpenCL_LIBRARY
+    ${CMAKE_CURRENT_SOURCE_DIR}/../OpenCL-SDK-v2022.04.01-Win-x64/OpenCL-SDK-2022.4.1-win32/lib/OpenCL.lib)
+ELSE(CMAKE_CL_64)
+set(OpenCL_INCLUDE_DIR
+    ${CMAKE_CURRENT_SOURCE_DIR}/../OpenCL-SDK-v2022.04.01-Win-x86/OpenCL-SDK-2022.4.1-win32/include)
+set(OpenCL_LIBRARY
+    ${CMAKE_CURRENT_SOURCE_DIR}/../OpenCL-SDK-v2022.04.01-Win-x86/OpenCL-SDK-2022.4.1-win32/lib/OpenCL.lib)
+ENDIF(CMAKE_CL_64)
+
 find_package(OpenCL)
 if(OpenCL_FOUND AND BUILD_WITH_OPENCL)
 	message(STATUS "${Green}Generating build with OpenCL...${ColorReset}")
@@ -427,7 +439,8 @@ else()
 endif()
 
 if (THIRD_PARTY_TARGETS)
-	include_directories(${THIRD_PARTY_DIR}/include)
+	include_directories(${THIRD_PARTY_DIR}/include
+        ${THIRD_PARTY_DIR}/include/boost-1_56/boost/tr1)
 	link_directories(${THIRD_PARTY_DIR}/lib)
 endif()
 add_subdirectory(src)
