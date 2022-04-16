@@ -78,7 +78,10 @@ struct Buffer
         /*! Copy data from CPU to GPU */
         COPY_TO_GPU,
         /*! Copy data from GPU to CPU */
-        COPY_FROM_GPU };
+        COPY_FROM_GPU,
+        WRITE_DATA = COPY_TO_GPU,
+        READ_DATA = COPY_FROM_GPU,
+    };
 
     /*! \brief Supported data types */
     enum Type{
